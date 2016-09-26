@@ -1,5 +1,6 @@
 package data.graph;
 
+import data.KeySortable;
 import util.TileType;
 
 /**
@@ -11,12 +12,13 @@ import util.TileType;
  * as there are at most 8 adjacent tiles to a single tile in the labyrinth.
  * 
  */
-public class Vertex {
+public class Vertex implements KeySortable{
     private Edge[] links;
     private TileType tile;
     private int x, y;
-    private double distance;
+    private int distance;
     private Vertex prev;
+    private int index;
 
     /**
      * Constructs an new vertex.
@@ -81,13 +83,41 @@ public class Vertex {
         return y;
     }
 
-    public void setDistance(double distance) {
+    public void setDistance(int distance) {
         this.distance = distance;
     }
 
-    public double getDistance() {
+    public int getDistance() {
         return distance;
     }
+
+    @Override
+    public int getKey() {
+        return distance;
+    }
+    
+    @Override
+    public void setKey(int d) {
+        this.distance = d;
+    }
+
+    @Override
+    public void setIndex(int index) {
+        this.index = index;
+    }
+
+    @Override
+    public int getIndex() {
+        return index;
+    }
+
+    @Override
+    public String toString() {
+        String string = "[" + x + "," + y + "]" + " type: " + tile + ", distance: " + distance;
+        return string;
+    }
+    
+    
     
     
 }

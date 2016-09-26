@@ -7,9 +7,9 @@ import util.TileType;
  * Edge is the link between two vertices in a graph that has a weight
  * 
  */
-public class Edge {
+public class Edge{
     private Vertex vertex1, vertex2;
-    private double weight;
+    private int weight;
 
     /**
      * Constructs a new edge between two nodes and
@@ -30,11 +30,11 @@ public class Edge {
         if(v1.getTileType() != null && v2.getTileType() != null){
             weight = v1.getTileType().equals(TileType.WALL) ||
                 v2.getTileType().equals(TileType.WALL)
-                ? 1000 : 1.0001;
+                ? 1000 : 1;
         } else if (v1.getTileType() != null){
-            weight = v1.getTileType().equals(TileType.WALL) ? 1000 : 1.0001;
+            weight = v1.getTileType().equals(TileType.WALL) ? 1000 : 1;
         } else if (v2.getTileType() != null){
-            weight = v2.getTileType().equals(TileType.WALL) ? 1000 : 1.0001;
+            weight = v2.getTileType().equals(TileType.WALL) ? 1000 : 1;
         } else {
             weight = 1000;
         }
@@ -63,12 +63,9 @@ public class Edge {
         return vertex2;
     }
 */
-    public double getWeight() {
+    public int getWeight() {
         return weight;
     }
-    
-    
-    
 }
 
 

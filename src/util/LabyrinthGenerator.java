@@ -17,6 +17,8 @@ public class LabyrinthGenerator {
      * @return graph of the labyrinth
      */
     public static Vertex[][] graphFromStringArray(String[] stringArray){
+        boolean containsStart = false;
+        boolean containsGoal = false;
         Vertex[][] graph = new Vertex[stringArray.length][stringArray[0].length()];
         for (int i = 0; i < stringArray.length; i++) {
             for (int j = 0; j < stringArray[i].length(); j++) {
@@ -25,11 +27,33 @@ public class LabyrinthGenerator {
                 n.setX(j);
                 n.setY(i);
                 graph[i][j] = n;
-                System.out.print("[(" + n.getX() + "," + n.getY() + "): " + n.getTileType().toString().charAt(0) + "] ");
+                if (!containsStart && graph[i][j].getTileType().equals(TileType.START)){
+                    containsStart = true;
+                } else if (graph[i][j].getTileType().equals(TileType.START)){
+                    //multiple starts, end program
+                    FileIO.println("\nLabyrinth had multiple starts (s)!");
+                    System.exit(0);
+                }
+                
+                if (!containsGoal && graph[i][j].getTileType().equals(TileType.GOAL)){
+                    containsGoal = true;
+                } else if (graph[i][j].getTileType().equals(TileType.GOAL)){
+                    //multiple goals, end program
+                    FileIO.println("\nLabyrinth had multiple goals (g)!");
+                    System.exit(0);
+                }
+                
+                FileIO.print("[(" + n.getX() + "," + n.getY() + "): " + n.getTileType().toString().charAt(0) + "] ");
                 linkNodes(i, j, graph, n);
             }
-            System.out.println("");
+            FileIO.println("");
         }
+        
+        if(!containsGoal || !containsStart){
+            FileIO.println("\nLabyrinth did not have either a start (s) or a goal (g)");
+            System.exit(0);
+        }
+        
         return graph;
     }
     

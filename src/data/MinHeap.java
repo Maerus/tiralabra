@@ -1,17 +1,17 @@
 
 package data;
 
-import data.graph.Vertex;
+import util.FileIO;
 
 
-public class MinHeap<E>{
+public class MinHeap{
     
     private int length;
-    private Object[] array;
-    
-    public MinHeap(int heapLength) {
-        length = 0;
-        array = new Object[heapLength];
+    private HeapNode[] array;
+
+    public MinHeap(int size) {
+        this.length = 0;
+        array = new HeapNode[size+1];
     }
     
     /**
@@ -23,7 +23,7 @@ public class MinHeap<E>{
      * @return the index of the parent node
      */
     public int parent(int index){
-        return index / 2;
+            return (index / 2);
     }
     
     /**
@@ -33,7 +33,7 @@ public class MinHeap<E>{
      * @return the index of the left child node
      */
     public int left(int index){
-        return 2 * index;
+        return (2 * (index));
     }
     
     /**
@@ -43,61 +43,139 @@ public class MinHeap<E>{
      * @return the index of the right child node
      */
     public int right(int index){
-        return 2 * index + 1;
+        return (2 * (index) + 1);
     }
     
-    
-    
-    
-    
-    
-    
-    // everything below this comment is not finished nor final
-    
-    
-    
-    
-    
-    
-    
     /**
-     * The helper algorithm to correct the heap
-     * I need to figure out an implementation with comparing the nodes before this gets finished
+     * The helper function to correct the heap
      * 
      * @param index
      */
     private void heapify(int index){
-        int left = left(index);
-        int right = right(index);
-        int smallest;
-        if(right <= length){
-            /*
-            smallest = array[left].key < array[right].key ? left : right;
-            if(array[index].key > array[smallest].key){
+        
+        int smallest = index;
+        
+        if(right(index) < length){
+            smallest = getKey(left(index)) < getKey(right(index)) ? left(index) : right(index);
+            if(getKey(index) > getKey(smallest)){
                 swap(index, smallest);
                 heapify(smallest);
             }
-            */
+            
         }
+        
+        else if (left(index) < length && getKey(index) > getKey(left(index))){
+            swap(index, left(index));
+        }
+        
+    }
+    
+    private void swap(int i, int j){
+        HeapNode a = new HeapNode(array[i].node());
+        array[i] = new HeapNode(array[j].node());
+        array[j] = a;
+        array[i].node().setIndex(i);
+        array[j].node().setIndex(j);
+    }
+    
+    private int getKey(int i){
+        return array[i].node().getKey();
+    }
+    
+    /**
+     * Inserts a new node in the heap as long as the heap array can fit it
+     * 
+     * @param node new node to be inserted
+     */
+    public void insert(HeapNode node){
+        // see if the heap array can fit a new object
         /*
-        else if (left == length && array[index].key > array[left].key){
-            swap(index, left);
+        if (length < array.length){
+            length++;
+            array[length] = node;
+            array[length].node().setIndex(length);
+            int a = length;
+            boolean disorder = true;
+            while(disorder){
+                System.out.println(parent(a));
+                int aa;
+                if(parent(a) == 0){
+                    aa = 1;
+                } else {
+                    aa = array[parent(a)].node().getKey();
+                }
+                
+                int bb = array[a].node().getKey();
+                if( aa <= bb ){
+                    disorder = false;
+                } else {
+                    FileIO.print("Insert: ");
+                    swap(a, parent(a));
+                    a = parent(a);
+                }
+            }
         }
         */
+        if(length < array.length){
+            length++;
+            int index = length;
+            while(index > 1 && array[parent(index)].node().getKey() > node.node().getKey()){
+                array[index] = new HeapNode(array[parent(index)].node());
+                index = parent(index);
+            }
+            array[index] = node;
+            array[index].node().setIndex(index);
+        }
     }
     
-    
-    public void insert(Vertex v, double weight){
-        
+    /**
+     * Decreases the key of a node and rearranges the heap accordingly.
+     * 
+     * @param index index of the node to change the key of
+     * @param newKey new key value
+     */
+    public void decreaseKey(int index, int newKey){
+        if(newKey < array[index].node().getKey()){
+            
+            array[index].node().setKey(newKey);
+            int aa;
+            if(parent(index) == 0){
+                aa = 1;
+            } else {
+                aa = parent(index);
+            }
+            while( array[aa].node().getKey() > array[index].node().getKey() ){
+                swap(index, parent(index));
+                index = parent(index);
+            }
+        }
     }
     
-    public void decreasePriority(Vertex v, double weight){
-        
+    /**
+     * Deletes and returns the root of the heap which contains the node with
+     * the minimum key value and then rearranges the heap.
+     * 
+     * @return the node with the minimum key value
+     */
+    public HeapNode deleteMin(){
+        HeapNode min = null;
+        if(length > 1){
+            min = array[1];
+            array[1] = new HeapNode(array[length].node());
+            length--;
+            heapify(1);
+        }
+        return min;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public HeapNode[] getArray() {
+        return array;
     }
     
-    public Vertex deleteMin(){
-        return null;
-    }
     
     
 }

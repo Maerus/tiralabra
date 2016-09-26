@@ -1,13 +1,16 @@
 
 package algorithm;
 
+import data.HeapNode;
 import data.MinHeap;
 import util.TileType;
 import data.graph.Vertex;
+import util.FileIO;
 
 
 public class Dijkstra {
     private Vertex start;
+    private Vertex goal;
     private Vertex[][] graph;
 
     /**
@@ -17,7 +20,7 @@ public class Dijkstra {
      */
     public Dijkstra(Vertex[][] graph) {
         this.graph = graph;
-        start = seekStart();
+        seekStart();
     }
     
     /**
@@ -25,17 +28,24 @@ public class Dijkstra {
      * 
      * @return the starting vertex
      */
-    private Vertex seekStart() {
+    private void seekStart() {
+        boolean startFound = false;
+        boolean goalFound = false;
         for (int i = 0; i < graph.length; i++) {
             for (int j = 0; j < graph[0].length; j++) {
                 if(graph[i][j].getTileType().equals(TileType.START)){
-                    return graph[i][j];
+                    start = graph[i][j];
+                    startFound = true;
+                }
+                if(graph[i][j].getTileType().equals(TileType.GOAL)){
+                    goal = graph[i][j];
+                    goalFound = true;
+                }
+                if(startFound && goalFound){
+                    break;
                 }
             }
         }
-        System.out.println("Graph did not have a start!");
-        System.exit(0);
-        return null;
     }
     
     /**
@@ -43,36 +53,51 @@ public class Dijkstra {
      */
     public void solve(){
         long timestamp = System.currentTimeMillis();
+        FileIO.println("\nStarting Dijkstra's algorithm");
+        algorithm();
+        Vertex v = goal;
         
-        //algorithmNoHeap();
-        
-        System.out.println("Dijkstra: Execution took " + (System.currentTimeMillis()-timestamp) + " ms");
+        FileIO.println("\nPATH (in reverse): ");
+        while(v.getPrev() != null){
+            FileIO.println(v.toString());
+            v = v.getPrev();
+        }
+        FileIO.println(v+"\n");
+        FileIO.println("Dijkstra: Execution took " + (System.currentTimeMillis()-timestamp) + " ms");
     }
-    
-    /*
-    private void algorithmNoHeap(){
-        
-    }
-    */
     
     
     /**
      * Runs the algorithm using a minimum heap
-     * will remain UNUSABLE and UNFINISHED until minimum heap structure is finished
+    */
     private void algorithm(){
         
         start.setDistance(0);
         
-        MinHeap<Vertex> heap;
+        MinHeap heap = new MinHeap(graph.length*graph[0].length);
         
         for (int i = 0; i < graph.length; i++) {
             for (int j = 0; j < graph[0].length; j++) {
                 if(!graph[i][j].getTileType().equals(TileType.START)){
-                    graph[i][j].setDistance(Double.POSITIVE_INFINITY);
+                    graph[i][j].setDistance(100000);
+                    graph[i][j].setPrev(null);
                 }
+                heap.insert(new HeapNode(graph[i][j]));
             }
         }
         
+        while (heap.getLength() > 1){
+            Vertex u = (Vertex)heap.deleteMin().node();
+            for (int i = 0; i < u.getLinks().length; i++) {
+                if(u.getLinks()[i] != null){
+                    int alt = u.getDistance() + u.getLinks()[i].getWeight();
+                    Vertex v = u.getLinks()[i].getLinkedVertex(u);
+                    if (alt < v.getDistance()){
+                        heap.decreaseKey(v.getIndex(), alt);
+                        v.setPrev(u);
+                    }
+                }
+            }
+        }
     }
-    */
 }
