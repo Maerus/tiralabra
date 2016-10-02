@@ -1,9 +1,8 @@
 
-import algorithm.Dijkstra;
+import algorithm.DijkstraSolver;
 import util.LabyrinthGenerator;
 import data.graph.Vertex;
 import java.io.File;
-import java.io.FileNotFoundException;
 import util.FileIO;
 
 
@@ -17,18 +16,9 @@ public class Main {
         
         String[] stringArray = FileIO.readFileIntoStringArray(new File("src/input.txt"));
         
-        /*
-        String[] stringArray = new String[4];
-        stringArray[0] = "#...s";
-        stringArray[1] = ".#.##";
-        stringArray[2] = ".#..#";
-        stringArray[3] = "#.##g";
-        */
-        
-        
         Vertex[][] graph = LabyrinthGenerator.graphFromStringArray(stringArray);
         
-        Dijkstra d = new Dijkstra(graph);
+        DijkstraSolver d = new DijkstraSolver(graph);
         d.solve();
         
     }

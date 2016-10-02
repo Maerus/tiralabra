@@ -18,7 +18,7 @@ public class VertexTest {
         Vertex v2 = new Vertex();
         Edge e = new Edge(v1, v2);
         v1.addLink(e);
-        assertTrue(v1.getLinks()[0].equals(e));
+        assertTrue(v1.getEdges()[0].equals(e));
     }
     
     /**
@@ -33,8 +33,8 @@ public class VertexTest {
         Edge e2 = new Edge(v1, v3);
         v1.addLink(e);
         v1.addLink(e2);
-        assertTrue(v1.getLinks()[0].equals(e));
-        assertTrue(v1.getLinks()[1].equals(e2));
+        assertTrue(v1.getEdges()[0].equals(e));
+        assertTrue(v1.getEdges()[1].equals(e2));
     }
     
     /**
@@ -49,9 +49,9 @@ public class VertexTest {
         Edge e2 = new Edge(v1, v3);
         v1.addLink(e);
         v1.addLink(e2);
-        assertEquals(e, v1.getLinks()[0]);
-        assertEquals(e2, v1.getLinks()[1]);
-        assertNotSame(e2, v1.getLinks()[0]);
+        assertEquals(e, v1.getEdges()[0]);
+        assertEquals(e2, v1.getEdges()[1]);
+        assertNotSame(e2, v1.getEdges()[0]);
     }
     
 }

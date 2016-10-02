@@ -54,6 +54,23 @@ public class LabyrinthGenerator {
             System.exit(0);
         }
         
+        /*
+        for (int i = 0; i < graph.length; i++) {
+            for (int j = 0; j < graph[0].length; j++) {
+                FileIO.println("");
+                for (int k = 0; k < graph[i][j].getLinks().length; k++) {
+                    if(graph[i][j].getLinks()[k] != null){
+                        Vertex v = graph[i][j];
+                        FileIO.print(v.getX() + "," + v.getY() + ": ");
+                        Edge e = graph[i][j].getLinks()[k];
+                        
+                        FileIO.print("["+e.getLinkedVertex(v).getX() + "," + e.getLinkedVertex(v).getY()+"]" +"   ");
+                    }
+                }
+            }
+        }
+        */
+        
         return graph;
     }
     

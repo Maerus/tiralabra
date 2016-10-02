@@ -55,7 +55,7 @@ public class Vertex implements KeySortable{
         this.tile = tile;
     }
 
-    public Edge[] getLinks() {
+    public Edge[] getEdges() {
         return links;
     }
 
