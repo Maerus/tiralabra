@@ -43,10 +43,10 @@ public class LabyrinthGenerator {
                     System.exit(0);
                 }
                 
-                FileIO.print("[(" + n.getX() + "," + n.getY() + "): " + n.getTileType().toString().charAt(0) + "] ");
+                //FileIO.print("[(" + n.getX() + "," + n.getY() + "): " + n.getTileType().toString().charAt(0) + "] ");
                 linkNodes(i, j, graph, n);
             }
-            FileIO.println("");
+            //FileIO.println("");
         }
         
         if(!containsGoal || !containsStart){

@@ -30,13 +30,13 @@ public class Edge{
         if(v1.getTileType() != null && v2.getTileType() != null){
             weight = v1.getTileType().equals(TileType.WALL) ||
                 v2.getTileType().equals(TileType.WALL)
-                ? 1000 : 1;
+                ? 10000 : 1;
         } else if (v1.getTileType() != null){
-            weight = v1.getTileType().equals(TileType.WALL) ? 1000 : 1;
+            weight = v1.getTileType().equals(TileType.WALL) ? 10000 : 1;
         } else if (v2.getTileType() != null){
-            weight = v2.getTileType().equals(TileType.WALL) ? 1000 : 1;
+            weight = v2.getTileType().equals(TileType.WALL) ? 10000 : 1;
         } else {
-            weight = 1000;
+            weight = 10000;
         }
         
     }
@@ -54,7 +54,7 @@ public class Edge{
         }
         return vertex1;
     }
-/*
+
     public Vertex getVertex1() {
         return vertex1;
     }
@@ -62,7 +62,7 @@ public class Edge{
     public Vertex getVertex2() {
         return vertex2;
     }
-*/
+
     public int getWeight() {
         return weight;
     }

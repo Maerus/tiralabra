@@ -32,7 +32,7 @@ public class EdgeTest {
         v1.setTile(TileType.FLOOR);
         v2.setTile(TileType.FLOOR);
         Edge e = new Edge(v1, v2);
-        assertEquals(1.0001f, e.getWeight(), 0.001f);
+        assertEquals(1, e.getWeight());
     }
     
     /**
@@ -45,7 +45,7 @@ public class EdgeTest {
         v1.setTile(TileType.FLOOR);
         v2.setTile(TileType.WALL);
         Edge e = new Edge(v1, v2);
-        assertEquals(1000f, e.getWeight(), 0.001f);
+        assertEquals(10000, e.getWeight());
     }
     
     /**
@@ -58,7 +58,7 @@ public class EdgeTest {
         v1.setTile(TileType.WALL);
         v2.setTile(TileType.WALL);
         Edge e = new Edge(v1, v2);
-        assertEquals(1000f, e.getWeight(), 0.001f);
+        assertEquals(10000, e.getWeight());
     }
     
 }

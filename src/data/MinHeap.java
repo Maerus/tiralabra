@@ -95,6 +95,7 @@ public class MinHeap {
             }
             array[index] = node;
             array[index].node().setIndex(index);
+            array[index].node().setInHeap(true);
         }
     }
 
@@ -129,8 +130,9 @@ public class MinHeap {
      */
     public HeapNode deleteMin() {
         HeapNode min = null;
-        if (length > 1) {
+        if (length > 0) {
             min = array[1];
+            min.node().setInHeap(false);
             array[1] = new HeapNode(array[length].node());
             length--;
             heapify(1);

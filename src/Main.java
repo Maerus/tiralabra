@@ -1,8 +1,9 @@
 
-import algorithm.DijkstraSolver;
+import algorithm.Solver;
 import util.LabyrinthGenerator;
 import data.graph.Vertex;
 import java.io.File;
+import util.CmdLine;
 import util.FileIO;
 
 
@@ -11,15 +12,22 @@ import util.FileIO;
 
 public class Main {
 
-
     public static void main(String[] args){
         
-        String[] stringArray = FileIO.readFileIntoStringArray(new File("src/input.txt"));
+        CmdLine cmd = new CmdLine();
+        String fileStr = cmd.selectFile();
+        int repeatCount = cmd.selectRepeatCount();
+        boolean printPath = cmd.selectToPrintPath();
         
+        //String fileStr = "src/labyrinth.txt";
+        
+        String[] stringArray = FileIO.readFileIntoStringArray(new File(fileStr));
         Vertex[][] graph = LabyrinthGenerator.graphFromStringArray(stringArray);
+        Solver solver = new Solver(graph, repeatCount, printPath);
         
-        DijkstraSolver d = new DijkstraSolver(graph);
-        d.solve();
+        //Solver solver = new Solver(graph, 1, true);
+
+        solver.solve();
         
     }
     

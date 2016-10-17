@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class FileIO {
 
     public static String[] readFileIntoStringArray(File file) {
-        println("\n\n ** " + new Date().toString() + " **\n");
+        println("\n ** " + file.getName() + " read at " + new Date().toString() + " **\n");
         String[] stringArray = new String[0];
         try {
             Scanner scanner = new Scanner(file);
