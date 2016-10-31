@@ -54,4 +54,12 @@ public class SolverTest {
         assertEquals(13, solver.getPath().length);
         assertEquals(TileType.START, solver.getPath()[0].getTileType());
     }
+    
+    @Test
+    public void testSolveWithAStar(){
+        solver.solveWithAStar();
+        assertEquals(12, solver.getGoal().getDistance());
+        assertEquals(13, solver.getPath().length);
+        assertEquals(TileType.START, solver.getPath()[0].getTileType());
+    }
 }

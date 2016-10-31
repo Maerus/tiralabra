@@ -3,23 +3,26 @@ package util;
 import java.util.Scanner;
 
 /**
- *  Simple command line interface
+ * Simple command line interface
  */
 public class CmdLine {
 
     Scanner s;
 
+    /**
+     * Constructor for CmdLine. creates a Scanner for reading user inputs.
+     */
     public CmdLine() {
         s = new Scanner(System.in);
     }
 
     /**
-     * Prompts the user for file
+     * Prompts the user for labyrinth file
      *
      * @return file path
      */
     public String selectFile() {
-        System.out.print("Select a labyrinth file. Leaving empty picks src/labyrinth.txt\n> ");
+        System.out.print("Select a labyrinth file. Leaving empty picks src/labyrinth.txt. Inputting 'pftest' runs the program with preset performance test settings\n> ");
         String input = s.nextLine();
         if (input.isEmpty()) {
             input = "src/labyrinth.txt";

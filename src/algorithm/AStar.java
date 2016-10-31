@@ -16,9 +16,7 @@ public class AStar {
 
     /**
      * The A* algorithm
-     * 
-     * NOT COMPLETED YET
-     * 
+     *
      * @param start the starting vertex
      * @param goal the goal vertex
      * @param graph the labyrinth graph
@@ -32,6 +30,7 @@ public class AStar {
                 graph[i][j].setDistance(graph[i][j].getTileType().equals(TileType.START) ? heuristic(graph[i][j], goal) : 2000000);
                 graph[i][j].setPrev(null);
                 graph[i][j].setEvaluated(false);
+                graph[i][j].setInHeap(false);
             }
         }
         //heapnode takes in a keySortable and the vertex uses its distance as its key, here we want its heuristic value
@@ -58,10 +57,9 @@ public class AStar {
                     } else if (alt >= neighbor.getDistance2()) {
                         continue;
                     }
-
                     neighbor.setPrev(u);
                     neighbor.setDistance2(alt);
-                    neighbor.setDistance(alt + heuristic(neighbor, goal));
+                    heap.decreaseKey(neighbor.getIndex(), alt + heuristic(neighbor, goal));
                 }
             }
         }

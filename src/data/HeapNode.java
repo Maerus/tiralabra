@@ -1,10 +1,11 @@
-
 package data;
 
 /**
- * This class exists to circumvent an error that happens when creating an array based on an interface (KeySortable)
+ * This class exists for creating arrays based on the interface KeySortable and
+ * nothing else
  */
 public class HeapNode {
+
     private KeySortable ks;
 
     public HeapNode(KeySortable ks) {
@@ -18,7 +19,5 @@ public class HeapNode {
     public void setNode(KeySortable ks) {
         this.ks = ks;
     }
-    
-    
 
 }

@@ -17,13 +17,12 @@ public class Vertex implements KeySortable {
     private TileType tile;
     private int x, y;
     /**
-     * distance is used as the key value in heap node.
-     * Dijkstra stores regular distance here and
-     * A* stores heuristic value for use in heap
+     * distance is used as the key value in heap node. Dijkstra stores regular
+     * distance here and A* stores heuristic value for use in heap
      */
     private int distance;
     /**
-     * second distance is used in A* for storing the regular distance. 
+     * second distance is used in A* for storing the regular distance.
      */
     private int distance2;
     private Vertex prev;
@@ -102,8 +101,9 @@ public class Vertex implements KeySortable {
 
     /**
      * actual distance in Dijkstra and Bellman-Ford.
-     * 
-     * @return distance, actual value in Dijkstra or Bellman-Ford, heuristic cost estimate in A*
+     *
+     * @return distance, actual value in Dijkstra or Bellman-Ford, heuristic
+     * cost estimate in A*
      */
     public int getDistance() {
         return distance;
@@ -112,9 +112,11 @@ public class Vertex implements KeySortable {
     public void setDistance2(int distance2) {
         this.distance2 = distance2;
     }
-    
+
     /**
-     * actual distance in A*
+     * actual distance in A
+     *
+     *
      * @return distance
      */
     public int getDistance2() {
@@ -159,10 +161,10 @@ public class Vertex implements KeySortable {
     public void setInHeap(boolean inHeap) {
         this.inHeap = inHeap;
     }
-    
+
     @Override
     public boolean isInHeap() {
         return inHeap;
     }
-    
+
 }

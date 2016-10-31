@@ -1,19 +1,27 @@
 package data;
 
-import util.FileIO;
-
+/**
+ * This class is a minimum binary heap which replaces the priority queue used in
+ * certain pathfinding algorithms
+ */
 public class MinHeap {
 
     private int length;
     private HeapNode[] array;
 
+    /**
+     * Constructs a new array to contain the vertices in the heap
+     *
+     * @param size The maximum size of the heap (the amount of vertices in the
+     * graph)
+     */
     public MinHeap(int size) {
         this.length = 0;
         array = new HeapNode[size + 1];
     }
 
     /**
-     * Returns the index of the parent node
+     * Returns the index of the parent node.
      *
      * Because index is an integer, the division gets floored automatically.
      *
@@ -25,7 +33,7 @@ public class MinHeap {
     }
 
     /**
-     * Returns the index of the left child node
+     * Returns the index of the left child node.
      *
      * @param index of a node in the heap
      * @return the index of the left child node
@@ -35,7 +43,7 @@ public class MinHeap {
     }
 
     /**
-     * Returns the index of the right child node
+     * Returns the index of the right child node.
      *
      * @param index of a node in the heap
      * @return the index of the right child node
@@ -45,9 +53,9 @@ public class MinHeap {
     }
 
     /**
-     * The helper function to correct the heap
+     * The helper function to correct the heap.
      *
-     * @param index
+     * @param index the position in the heap
      */
     private void heapify(int index) {
 

@@ -97,60 +97,71 @@ public class Solver {
      * milliseconds
      */
     public void solve() {
-        //solveWithAStar(); NOT FINISHED YET
+        solveWithAStar();
         solveWithDijkstra(true);
         solveWithDijkstra(false);
         solveWithBellmanFord();
     }
-    
+
     /**
      * Prints the path found by the algorithm if enabled
+     *
+     * @param astar Set to true if running with A* to print clarification to
+     * vertex distance. Otherwise set to false.
      */
-    private void printPath(){
-        if(!printPath){
+    private void printPath(boolean astar) {
+        if (!printPath) {
             return;
         }
         pathArray = getPath();
         FileIO.println("\nTiles in the shortest path: ");
         for (int j = 0; j < pathArray.length; j++) {
-            FileIO.println(pathArray[j].toString());
+            if (astar) {
+                FileIO.println(pathArray[j].toString() + "  (distance + heuristic)");
+            } else {
+                FileIO.println(pathArray[j].toString());
+            }
         }
     }
 
     /**
      * Runs the Dijkstra's algorithm set amount of times, logs its execution
-     * time and prints the path
+     * time and prints the path if set so.
      *
      * @param stopAtGoal Set to true if stopping execution when finding the goal
      * vertex. False will run through entire graph
      */
     public void solveWithDijkstra(boolean stopAtGoal) {
         long timestamp = System.currentTimeMillis();
-        String goalString = stopAtGoal ? "stopping at goal. ": "running through the entire graph. ";
+        String goalString = stopAtGoal ? "stopping at goal. " : "running through the entire graph. ";
         FileIO.println("\nStarting Dijkstra's algorithm " + goalString + "Running " + testingAmount + " times");
-        
+
         for (int i = 0; i < testingAmount; i++) {
             Dijkstra.algorithm(start, graph, stopAtGoal);
         }
         FileIO.println("Dijkstra's algorithm done: Execution took " + (System.currentTimeMillis() - timestamp) + " ms");
-        printPath();
+        printPath(false);
         FileIO.println("Dijkstra out!");
     }
-    
-    public void solveWithAStar(){
+
+    /**
+     * Runs the A* algorithm using Chebyshev distance as its heuristic, logs the
+     * execution time and prints the path found by the algorithm if set so.
+     */
+    public void solveWithAStar() {
         long timestamp = System.currentTimeMillis();
         FileIO.println("\nStarting A* algorithm. " + "Running " + testingAmount + " times");
         for (int i = 0; i < testingAmount; i++) {
             AStar.algorithm(start, goal, graph);
         }
         FileIO.println("A* algorithm done: Execution took " + (System.currentTimeMillis() - timestamp) + " ms");
-        printPath();
+        printPath(true);
         FileIO.println("A* out!");
     }
 
     /**
      * Runs the Bellman-Ford algorithm, logs its execution time and prints the
-     * path
+     * path if set so.
      */
     public void solveWithBellmanFord() {
         long timestamp = System.currentTimeMillis();
@@ -159,7 +170,7 @@ public class Solver {
             BellmanFord.algorithm(start, vertices, edges);
         }
         FileIO.println("Bellman-Ford algorithm done: Execution took " + (System.currentTimeMillis() - timestamp) + " ms");
-        printPath();
+        printPath(false);
         FileIO.println("Bellman-Ford out!");
     }
 

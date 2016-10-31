@@ -1,0 +1,170 @@
+
+ ** perf1.txt read at Mon Oct 31 07:04:49 EET 2016 **
+
+s
+.
+.
+.
+.
+.
+.
+.
+.
+g
+
+
+Starting A* algorithm. Running 1000000 times
+A* algorithm done: Execution took 346 ms
+A* out!
+
+Starting Dijkstra's algorithm stopping at goal. Running 1000000 times
+Dijkstra's algorithm done: Execution took 588 ms
+Dijkstra out!
+
+Starting Dijkstra's algorithm running through the entire graph. Running 1000000 times
+Dijkstra's algorithm done: Execution took 561 ms
+Dijkstra out!
+
+Starting Bellman-Ford's algorithm. Running 1000000 times
+Bellman-Ford algorithm done: Execution took 283 ms
+Bellman-Ford out!
+
+ ** perf1v2.txt read at Mon Oct 31 07:04:51 EET 2016 **
+
+s
+.
+.
+.
+g
+.
+.
+.
+.
+.
+
+
+Starting A* algorithm. Running 1000000 times
+A* algorithm done: Execution took 154 ms
+A* out!
+
+Starting Dijkstra's algorithm stopping at goal. Running 1000000 times
+Dijkstra's algorithm done: Execution took 392 ms
+Dijkstra out!
+
+Starting Dijkstra's algorithm running through the entire graph. Running 1000000 times
+Dijkstra's algorithm done: Execution took 532 ms
+Dijkstra out!
+
+Starting Bellman-Ford's algorithm. Running 1000000 times
+Bellman-Ford algorithm done: Execution took 287 ms
+Bellman-Ford out!
+
+ ** perf2.txt read at Mon Oct 31 07:04:52 EET 2016 **
+
+s.....
+......
+......
+......
+......
+.....g
+
+
+Starting A* algorithm. Running 1000000 times
+A* algorithm done: Execution took 974 ms
+A* out!
+
+Starting Dijkstra's algorithm stopping at goal. Running 1000000 times
+Dijkstra's algorithm done: Execution took 2912 ms
+Dijkstra out!
+
+Starting Dijkstra's algorithm running through the entire graph. Running 1000000 times
+Dijkstra's algorithm done: Execution took 3114 ms
+Dijkstra out!
+
+Starting Bellman-Ford's algorithm. Running 1000000 times
+Bellman-Ford algorithm done: Execution took 11022 ms
+Bellman-Ford out!
+
+ ** perf3.txt read at Mon Oct 31 07:05:10 EET 2016 **
+
+s....
+####.
+.....
+.####
+.....
+####.
+g....
+
+
+Starting A* algorithm. Running 1000000 times
+A* algorithm done: Execution took 2600 ms
+A* out!
+
+Starting Dijkstra's algorithm stopping at goal. Running 1000000 times
+Dijkstra's algorithm done: Execution took 3219 ms
+Dijkstra out!
+
+Starting Dijkstra's algorithm running through the entire graph. Running 1000000 times
+Dijkstra's algorithm done: Execution took 3819 ms
+Dijkstra out!
+
+Starting Bellman-Ford's algorithm. Running 1000000 times
+Bellman-Ford algorithm done: Execution took 10375 ms
+Bellman-Ford out!
+
+ ** perf4.txt read at Mon Oct 31 07:05:30 EET 2016 **
+
+......
+##s.#.
+.##.#.
+#..##.
+...#g.
+#.##..
+......
+
+
+Starting A* algorithm. Running 1000000 times
+A* algorithm done: Execution took 2391 ms
+A* out!
+
+Starting Dijkstra's algorithm stopping at goal. Running 1000000 times
+Dijkstra's algorithm done: Execution took 3806 ms
+Dijkstra out!
+
+Starting Dijkstra's algorithm running through the entire graph. Running 1000000 times
+Dijkstra's algorithm done: Execution took 4856 ms
+Dijkstra out!
+
+Starting Bellman-Ford's algorithm. Running 1000000 times
+Bellman-Ford algorithm done: Execution took 15829 ms
+Bellman-Ford out!
+
+ ** perf5.txt read at Mon Oct 31 07:05:57 EET 2016 **
+
+..........
+..........
+..#...g...
+..#.......
+..####....
+.....#....
+.....#....
+..s.......
+..........
+..........
+
+
+Starting A* algorithm. Running 1000000 times
+A* algorithm done: Execution took 4467 ms
+A* out!
+
+Starting Dijkstra's algorithm stopping at goal. Running 1000000 times
+Dijkstra's algorithm done: Execution took 13233 ms
+Dijkstra out!
+
+Starting Dijkstra's algorithm running through the entire graph. Running 1000000 times
+Dijkstra's algorithm done: Execution took 14257 ms
+Dijkstra out!
+
+Starting Bellman-Ford's algorithm. Running 1000000 times
+Bellman-Ford algorithm done: Execution took 102309 ms
+Bellman-Ford out!

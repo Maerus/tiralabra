@@ -12,7 +12,7 @@ public class BellmanFord {
 
     /**
      * Runs Bellman-Ford algorithm over the entire graph
-     * 
+     *
      * @param start vertex
      * @param vertices the array of vertices in the graph
      * @param edges the array of edges in the graph
@@ -33,8 +33,7 @@ public class BellmanFord {
                 if (u.getDistance() + edges[j].getWeight() < v.getDistance()) {
                     v.setDistance(u.getDistance() + edges[j].getWeight());
                     v.setPrev(u);
-                }
-                else if (v.getDistance() + edges[j].getWeight() < u.getDistance()) {
+                } else if (v.getDistance() + edges[j].getWeight() < u.getDistance()) {
                     u.setDistance(v.getDistance() + edges[j].getWeight());
                     u.setPrev(v);
                 }
